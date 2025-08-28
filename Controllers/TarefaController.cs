@@ -90,7 +90,7 @@ namespace TrilhaApiDesafio.Controllers
                 return BadRequest(new { Erro = "A data da tarefa não pode ser vazia" });
 
 
-            var tarefaRepetida = _context.Tarefas.FirstOrDefault(t => t.Titulo.Trim() == tarefa.Titulo.Trim() && t.Data == tarefa.Data);
+            var tarefaRepetida = _context.Tarefas.FirstOrDefault(t => t.Titulo.Trim() == tarefa.Titulo.Trim() && t.Data == tarefa.Data && t.Id != id);
 
             if(tarefaRepetida != null)
                 return BadRequest(new { Erro = "Já existe uma tarefa com este titulo para essa data" });
